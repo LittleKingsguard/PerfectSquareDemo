@@ -243,9 +243,8 @@ class Square extends React.Component {
                     {totalRange(inRange)}
                     {totalEquality(equality)}
                     <div className="container py-5">
-                        <div className="row">
-                            <div className="col-sm-12 col-lg-3">
-                                <table>
+                            <div className="col-sm-12 col-lg-3 justify-content-center" style={{margin: 'Auto'}}>
+                                <table style={{margin: 'Auto'}}>
                                     <caption>Matrix</caption>
                                     <tbody>
                                     {Square.matrix.map((array, i) => (
@@ -267,7 +266,6 @@ class Square extends React.Component {
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
                             <div className="col-sm-12 col-lg-2">
                                 <button type="button" className="btn btn-danger">
                                     Delete Square
