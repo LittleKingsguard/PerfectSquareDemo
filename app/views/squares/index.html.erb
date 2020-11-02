@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Squares</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Matrix</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @squares.each do |square| %>
+      <tr>
+        <td><%= square.matrix %></td>
+        <td><%= link_to 'Show', square %></td>
+        <td><%= link_to 'Edit', edit_square_path(square) %></td>
+        <td><%= link_to 'Destroy', square, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Square', new_square_path %>
