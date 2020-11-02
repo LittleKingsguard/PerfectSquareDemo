@@ -124,7 +124,7 @@ function columnTotal(matrix, squareness){
 
 function rangeChecker(matrix){
     const dimension = matrix.length;
-    const rangeCap = dimension**2 +1;
+    const rangeCap = dimension**2;
     console.log(rangeCap);
     for (let i =0; i < dimension; i++){
         for (let j = 0; j < dimension; j++){
@@ -149,8 +149,9 @@ function perfectChecker(uniqueness, squareness, equality, inRange){
     }
 }
 
-function cellColor(number, uniqueness){
-    if (uniqueness[number]){
+function cellColor(number, uniqueness, dimension){
+    const max = dimension **2 + 1;
+    if (uniqueness[number] && number > 0 && number < max){
         return <td style={{backgroundColor: "PaleGreen"}}>{number}</td>
     }
     else {
@@ -221,6 +222,7 @@ class Square extends React.Component {
         const {Square} = this.state;
         console.log(Square);
         const squareness = isSquare(Square.matrix);
+        const dimension = Square.matrix.length;
         const colTotal = columnTotal(Square.matrix, squareness);
         const rowTotal = rowTotals(Square.matrix, squareness);
         const crossTotals = [leftRightTotal(Square.matrix, squareness), rightLeftTotal(Square.matrix, squareness)];
@@ -250,7 +252,7 @@ class Square extends React.Component {
                                         <tr>
                                             <td></td>
                                             {array.map((number, j) => (
-                                                cellColor(number, uniqueness)
+                                                cellColor(number, uniqueness, dimension)
                                             ))}
                                             {totalColor(rowTotal[i], equality)}
                                         </tr>
